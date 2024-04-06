@@ -8,14 +8,14 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // Add your own Auth0 domain and client ID here
-const auth0Domain = "dev-7sg88vbgl7foxmfk.us.auth0.com";
-const auth0ClientId = "qGxQONTFUrVVLyVJzZiVj70Z59l4WCJi";
+const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain={auth0Domain}
-      clientId={auth0ClientId}
+      domain={domain}
+      clientId={clientId}
       redirectUri={window.location.origin}
     >
       <App />
