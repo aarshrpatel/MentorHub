@@ -9,7 +9,6 @@ function Navbar() {
         <Link to="/dashboard" style={styles.navLink}>Dashboard</Link>
         <Link to="/profile" style={styles.navLink}>Profile</Link>
         <Link to="/about" style={styles.navLink}>About Us</Link>
-        <Link to="/social" style={styles.navLink}>Social</Link>
         <button style={styles.logoutButton} >Logout</button>
         {/* Add more links as needed */}
       </div>
@@ -19,12 +18,12 @@ function Navbar() {
 
 const styles = {
   logoutButton: {
-    marginTop: '20px',
+    marginTop: '10px',
     padding: '10px 20px',
     fontSize: '16px',
     color: 'white',
-    backgroundColor: '#007bff',
-    border: 'solid black 1px',
+    backgroundColor: 'red',
+    border: 'solid black 2px',
     borderRadius: '5px',
     cursor: 'pointer',
   },
@@ -45,10 +44,16 @@ const styles = {
     gap: '20px', // Creates space between the links
   },
   navLink: {
-    color: '#fff',
+    marginTop: '10px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: 'black',
+    backgroundColor: 'white',
+    border: 'solid black 2px',
+    borderRadius: '5px',
+    cursor: 'pointer',
     textDecoration: 'none',
-    fontSize: '18px',
-    transition: 'color 0.3s',
   }
 };
 
