@@ -9,7 +9,9 @@ class Review:
         self.comments = comments
         self.review_date = review_date
 
-    def _setID(id):
+    def _setID(self, id):
+        if self.user_id:
+            return
         if not id:
             return uuid3()
         return id

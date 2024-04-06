@@ -1,4 +1,5 @@
-from flask import Blueprint, request, session, jsonify
+from flask import Blueprint, request, session, jsonify, redirect, url_for
+from flask_login import
 from model.database_func import read_data
 from model.User import User, get_user
 

@@ -1,11 +1,12 @@
 import re
-from uuid import uuid3
+from uuid import uuid4
 from datetime import datetime, timedelta
-from database_func import read_data
+from database_func import read_data, write_data
+from data_constants import *
 
 class User:
     def __init__(self, id, username, email, first_name, last_name, date_of_birth, profile_picture_url):
-        self.user_id = self._setID(id)
+        self.id = self._setID(id)
         self.username = self.setName(username)
         self.email = self.setEmail(email)
         self.first_name = self.setName(first_name)
@@ -15,9 +16,11 @@ class User:
         self.registration_date = datetime.now().date()
         self.last_login_date = datetime.now().date()
 
-    def _setID(id):
+    def _setID(self, id):
+        if self.user_id:
+            return
         if not id:
-            return uuid3()
+            return uuid4()
         return id
 
     def setName(username):
@@ -47,7 +50,7 @@ class User:
 
 
 def get_user(email) -> User:
-    all_user_info = read_data('../../database/user.csv')
+    all_user_info = read_data(USER_FILE)
     for user_info in all_user_info:
         if email == user_info.email:
             user = User(user_info['email'], 
@@ -60,5 +63,15 @@ def get_user(email) -> User:
                         user_info['location']
             )
             return user
-        
     return 0
+
+
+def update_user_profile(new_user_data:dict):
+    all_users = read_data(USER_FILE)
+
+    for user in all_users:
+        if user.id == new_user_data.id:
+            user.update(new_user_data)
+            write_data(USER_FILE, all_users)
+            return user
+    return None

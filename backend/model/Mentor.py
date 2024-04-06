@@ -10,7 +10,9 @@ class Mentor:
             self.rating = rating
             self.status = status
 
-    def _setID(id):
+    def _setID(self, id):
+        if self.user_id:
+            return
         if not id:
             return uuid3()
         return id

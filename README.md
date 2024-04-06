@@ -10,3 +10,4 @@ npm run start
 # To use back end
 cd .\backend\
 .\env\Scripts\activate
+py App.py
