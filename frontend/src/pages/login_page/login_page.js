@@ -1,6 +1,25 @@
 import React, { useState } from 'react';
 import { Form, Container, Button } from 'react-bootstrap';
 
+const style = {
+  Container: {
+    flexGrow: 1,
+    width: '100%',
+    maxWidth: '100%',
+    overflow: 'hidden',
+    display: 'inline-block',
+    padding: '10px 0 10px 0',
+  },
+
+  box: {
+    paddingTop: '5px',
+    display: 'inline-flex',
+    width: '95%',
+    maxWidth: '100%',
+    backgroundColor: 'white'
+  },
+};
+
 const LoginPage = () => {
   // State variables to store the username and password
   const [username, setUsername] = useState('');
@@ -23,10 +42,10 @@ const LoginPage = () => {
   };
 
   return (
-    <Container fluid className="h-100 d-flex justify-content-center align-items-center"> {/* Set height to 100vh */}
+    <Container expand='lg' className='d-flex justify-content-center align-items-center' style={style.Container}> {/* Set height to 100vh */}
       <div
         className="bg-white p-5 rounded shadow"
-        style={{ width: '100%', maxWidth: '1000px' }}
+        style={{ width: '100%', maxWidth: '600px' }}
       >
         <h2 className="text-center mb-4" style={{ fontSize: '2rem' }}>Login</h2>
         <Form onSubmit={handleSubmit}>
