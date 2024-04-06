@@ -1,8 +1,8 @@
 import re
 from uuid import uuid4
 from datetime import datetime, timedelta
-from database_func import read_data, write_data
-from data_constants import *
+from .database_func import read_data, write_data
+from .data_constants import *
 
 class User:
     def __init__(self, id, username, email, first_name, last_name, date_of_birth, profile_picture_url):

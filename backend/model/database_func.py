@@ -1,5 +1,5 @@
 import csv, json, os
-from data_constants import *
+from .data_constants import *
 from uuid import uuid4
 import shutil
 

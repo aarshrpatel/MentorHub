@@ -1,6 +1,6 @@
 import os, sys
-from flask import Flask
-sys.path.append('.')
+import datetime
+from flask import Flask, send_from_directory, jsonify, render_template, request
 from routes.auth import auth_blueprint
 
 app = Flask(__name__)
