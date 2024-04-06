@@ -7,8 +7,10 @@ const style = {
     width: '100%',
     maxWidth: '100%',
     overflow: 'hidden',
-    display: 'inline-block',
+    display: 'flex',
     padding: '10px 0 10px 0',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   box: {
@@ -43,10 +45,6 @@ const LoginPage = () => {
 
   return (
     <Container expand='lg' className='d-flex justify-content-center align-items-center' style={style.Container}> {/* Set height to 100vh */}
-      <div
-        className="bg-white p-5 rounded shadow"
-        style={{ width: '100%', maxWidth: '600px' }}
-      >
         <h2 className="text-center mb-4" style={{ fontSize: '2rem' }}>Login</h2>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicUsername" className="mb-4">
@@ -86,7 +84,6 @@ const LoginPage = () => {
             Login
           </Button>
         </Form>
-      </div>
     </Container>
   );
 };
