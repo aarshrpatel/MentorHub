@@ -13,6 +13,7 @@ body, html {
   justify-content: center;
   align-items: center;
   height: 100vh; /* Ensure the app takes up the full height of the viewport */
+  width: 100vw; /* Ensure the app takes up the full width of the viewport */
   background-color: #f0f7ff; /* Light blue background color */
 }
 
@@ -22,24 +23,14 @@ body, html {
   border-radius: 15px; /* Rounded corners */
   padding: 30px; /* Padding around the content */
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  width: 100%; /* Ensure it takes up full width of the container */
+  width: 100vw; /* Ensure it takes up full width of the container */
   max-width: 600px; /* Maximum width */
 }
 
 /* Center the form elements */
 .form-group {
-  text-align: left; /* Align text to the left */
+  text-align: center; /* Align text to the left */
   margin-bottom: 20px; /* Spacing between form groups */
-}
-
-/* Style the login button */
-.btn-login {
-  margin: 10px 0; /* Adjust the margin as needed */
-  color: #ffffff; /* White text color */
-  padding: 10px 20px; /* Padding around the text */
-  background-color: #007bff; /* Blue button color */
-  border-color: #007bff; /* Blue border color */
-  border-radius: 10px; /* Rounded corners */
 }
 
 /* Add spacing between text elements */
