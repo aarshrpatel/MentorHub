@@ -1,5 +1,4 @@
 from flask import Blueprint, request, session, jsonify, redirect, url_for
-from flask_login import
 from model.database_func import read_data
 from model.User import User, get_user
 
@@ -11,12 +10,12 @@ def login():
         email = request.json.get('email')
         password = request.json.get('password')
         accounts = read_data('../../database/account.csv')
-        identify = {email: password}
 
-        if identify in accounts:
-            user = get_user(email)
-            session['username'] = user.username
-            return jsonify(user)
+        for acc in accounts:
+            if acc['email'] == email and acc['password'] == password:
+                user = get_user(email)
+                session['username'] = user.username
+                return jsonify(user), 200
         else:
             return jsonify({'error': 'Invalid username or password'}), 401
         
