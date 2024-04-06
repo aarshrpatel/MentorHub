@@ -1,15 +1,67 @@
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import LoginButton from '../components/LoginButton';
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
-  const { isAuthenticated } = useAuth0();
+  const pageStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+    color: '#333',
+    textAlign: 'center',
+    background: 'linear-gradient(135deg, #f093fb, #f5576c)',
+  };
+
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '300px',
+  };
+
+  const inputStyle = {
+    padding: '10px',
+    marginBottom: '20px',
+    borderRadius: '5px',
+    border: '1px solid #ddd',
+    fontSize: '16px',
+  };
+
+  const buttonStyle = {
+    padding: '10px',
+    fontSize: '16px',
+    color: '#fff',
+    background: '#333',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  };
+
+  const linkStyle = {
+    marginTop: '20px',
+    textDecoration: 'none',
+    color: '#333',
+  };
 
   return (
-    <div>
-      <h2>Login Page</h2>
-      {!isAuthenticated && <LoginButton />}
-      {isAuthenticated && <p>You are already logged in!</p>}
+    <div style={pageStyle}>
+      <h1>Login to Your Account</h1>
+      <form style={formStyle}>
+        <input
+          type="text"
+          placeholder="Username"
+          style={inputStyle}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          style={inputStyle}
+          required
+        />
+        <button type="submit" style={buttonStyle}>Log In</button>
+      </form>
+      <Link to="/" style={linkStyle}>Back to Home</Link>
     </div>
   );
 }
