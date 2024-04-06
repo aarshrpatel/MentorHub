@@ -53,8 +53,18 @@ function LoginPage() {
   return (
     <div style={pageStyle}>
       <img src={ mentorhublogo } alt='MentorHub Logo' style={imageStyle}/>
-      <h1>Login to Your Account</h1>
+      <h1>Register Your Account</h1>
       <form style={formStyle}>
+        <input
+          type="text"
+          placeholder="First Name"
+          style={inputStyle}
+          required/>
+        <input
+            type="text"
+            placeholder="Last Name"
+            style={inputStyle}
+            required/>
         <input
           type="email"
           placeholder="Email"
@@ -67,9 +77,15 @@ function LoginPage() {
           style={inputStyle}
           required
         />
-        <button type="submit" style={buttonStyle}>Log In</button>
+        <input
+          type="confirm password"
+          placeholder="Confirm Password"
+          style={inputStyle}
+          required
+        />
+        <button type="submit" style={buttonStyle}>Sign Up</button>
       </form>
-      <Link to="/" style={linkStyle}>Back to Home</Link>
+      <Link to="/" style={linkStyle}>Already Registered</Link>
     </div>
   );
 }

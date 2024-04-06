@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import mentorhublogo from '../assets/mentorhub-logo.png';
 
 function HomePage() {
+  const imageStyle = {
+    width: '200px',
+    marginBottom: '20px',
+    borderRadius: '50%'
+  };
+
   const homePageStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -27,6 +34,7 @@ function HomePage() {
 
   return (
     <div style={homePageStyle}>
+      <img src={ mentorhublogo } alt='MentorHub Logo' style={imageStyle}/>
       <h1>Welcome to Our Application</h1>
       <p>Connect and grow with mentors from around the world.</p>
       <Link to="/login" style={buttonStyle}>Get Started</Link>
