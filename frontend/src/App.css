@@ -1,38 +1,48 @@
+/* App.css */
+
+/* Reset default margin and padding */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set full height for the App container */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh; /* Ensure the app takes up the full height of the viewport */
+  background-color: #f0f7ff; /* Light blue background color */
 }
 
-.App-link {
-  color: #61dafb;
+/* Apply styles to the LoginPage component */
+.LoginPage {
+  background-color: #ffffff; /* White background color */
+  border-radius: 15px; /* Rounded corners */
+  padding: 30px; /* Padding around the content */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 100%; /* Ensure it takes up full width of the container */
+  max-width: 600px; /* Maximum width */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Center the form elements */
+.form-group {
+  text-align: left; /* Align text to the left */
+  margin-bottom: 20px; /* Spacing between form groups */
+}
+
+/* Style the login button */
+.btn-login {
+  margin: 10px 0; /* Adjust the margin as needed */
+  color: #ffffff; /* White text color */
+  padding: 10px 20px; /* Padding around the text */
+  background-color: #007bff; /* Blue button color */
+  border-color: #007bff; /* Blue border color */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Add spacing between text elements */
+.text-spacing {
+  margin-bottom: 10px; /* Adjust the spacing as needed */
 }
