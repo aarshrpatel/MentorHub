@@ -1,10 +1,9 @@
 import React from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import mentorhublogo from '../assets/mentorhub-logo.png';
 
 function LoginPage() {
-  const { loginWithRedirect } = useAuth0(); // Destructure the loginWithRedirect method
+  let navigate = useNavigate();
 
   const pageStyle = {
     display: 'flex',
@@ -53,12 +52,27 @@ function LoginPage() {
     borderRadius: '50%'
   };
 
+
+
   return (
     <div style={pageStyle}>
-      <img src={mentorhublogo} alt='MentorHub Logo' style={imageStyle}/>
+      <img src={ mentorhublogo } alt='MentorHub Logo' style={imageStyle}/>
       <h1>Login to Your Account</h1>
-      {/* Remove the form and replace with a login button */}
-      <button onClick={() => loginWithRedirect()} style={buttonStyle}>Log In</button>
+      <form style={formStyle}>
+        <input
+          type="email"
+          placeholder="Email"
+          style={inputStyle}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          style={inputStyle}
+          required
+        />
+        <button type="submit" style={buttonStyle} onClick={() => navigate("/dashboard")}>Log In</button>
+      </form>
       <Link to="/" style={linkStyle}>Back to Home</Link>
     </div>
   );
