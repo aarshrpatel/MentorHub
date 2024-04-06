@@ -1,14 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import NavBar from './pages/nav/navbar.js';
-import LoginPage from './pages/login_page/login_page';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
+import NotFoundPage from './pages/NotFoundPage';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
-    <div className="App">
-      <LoginPage />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
