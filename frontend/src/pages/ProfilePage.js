@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function ProfilePage() {
   // Initial user data
   const [userData, setUserData] = useState({
+    profilePic: 'https://via.placeholder.com/200', // Increased size of the placeholder image
     name: "John Doe",
     email: "john.doe@example.com",
-    bio: "Enthusiastic developer and lifelong learner."
+    bio: "Enthusiastic developer and lifelong learner.",
+    linkedIn: "https://linkedin.com/in/johndoe",
+    // Add more social links if necessary
   });
-  
+
   // State to toggle edit mode
   const [editMode, setEditMode] = useState(false);
-  
+
   // Handles input changes for user data fields
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -19,72 +24,86 @@ function ProfilePage() {
       [name]: value
     }));
   };
-  
-  // Styling objects
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginTop: '20px',
-  };
-  
-  const inputStyle = {
-    padding: '10px',
-    marginBottom: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    width: '300px',
-  };
-  
-  const buttonStyle = {
-    padding: '10px 15px',
-    borderRadius: '5px',
-    border: 'none',
-    backgroundColor: '#007bff',
-    color: 'white',
-    cursor: 'pointer',
-  };
-  
-  const textStyle = {
-    marginBottom: '10px',
+
+  // Style objects
+  const styles = {
+    profileContainer: {
+      display: 'flex',
+      justifyContent: 'space-around',
+      alignItems: 'flex-start',
+      marginTop: '40px', // Increased spacing
+      padding: '40px', // Increased padding
+      minHeight: 'calc(100vh - 200px)', // Adjusted for larger header and footer
+    },
+    profileDetails: {
+      flex: 3,
+      fontSize: '1.2rem', // Increased font size
+    },
+    profilePicContainer: {
+      flex: 1,
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    profilePic: {
+      width: '200px', // Increased image size
+      height: '200px', // Increased image size
+      borderRadius: '50%',
+    },
+    input: {
+      padding: '15px', // Increased padding
+      marginBottom: '15px', // Increased spacing
+      borderRadius: '5px',
+      border: '1px solid #ccc',
+      width: '100%', // Full width of parent
+      fontSize: '1.1rem', // Increased font size
+    },
+    button: {
+      padding: '15px 30px', // Increased padding
+      borderRadius: '5px',
+      border: 'none',
+      backgroundColor: '#007bff',
+      color: 'white',
+      cursor: 'pointer',
+      fontSize: '1.1rem', // Increased font size
+      marginTop: '15px', // Increased spacing
+    },
+    // Add more styles as needed
   };
 
   return (
-    <div style={containerStyle}>
-      <h1>User Profile</h1>
-      {editMode ? (
-        <>
-          <input
-            style={inputStyle}
-            type="text"
-            name="name"
-            value={userData.name}
-            onChange={handleInputChange}
-          />
-          <input
-            style={inputStyle}
-            type="email"
-            name="email"
-            value={userData.email}
-            onChange={handleInputChange}
-          />
-          <textarea
-            style={{ ...inputStyle, height: '100px' }}
-            name="bio"
-            value={userData.bio}
-            onChange={handleInputChange}
-          />
-          <button style={buttonStyle} onClick={() => setEditMode(false)}>Save</button>
-        </>
-      ) : (
-        <>
-          <div style={textStyle}><strong>Name:</strong> {userData.name}</div>
-          <div style={textStyle}><strong>Email:</strong> {userData.email}</div>
-          <div style={textStyle}><strong>Bio:</strong> {userData.bio}</div>
-          <button style={buttonStyle} onClick={() => setEditMode(true)}>Edit Profile</button>
-        </>
-      )}
-    </div>
+    <>
+      <Navbar />
+      <div style={styles.profileContainer}>
+        <div style={styles.profileDetails}>
+          <h1 style={{ fontSize: '2.5rem' }}>User Profile</h1> {/* Increased heading size */}
+          {editMode ? (
+            <>
+              {/* Form inputs */}
+              <input style={styles.input} type="text" name="name" value={userData.name} onChange={handleInputChange} />
+              <input style={styles.input} type="email" name="email" value={userData.email} onChange={handleInputChange} />
+              <textarea style={{ ...styles.input, height: '150px' }} name="bio" value={userData.bio} onChange={handleInputChange} />
+              <input style={styles.input} type="text" name="linkedIn" value={userData.linkedIn} onChange={handleInputChange} />
+              {/* Include other social media inputs here */}
+              <button style={styles.button} onClick={() => setEditMode(false)}>Save Changes</button>
+            </>
+          ) : (
+            <>
+              {/* User details */}
+              <p style={{ fontSize: '1.2rem' }}><strong>Name:</strong> {userData.name}</p>
+              <p style={{ fontSize: '1.2rem' }}><strong>Email:</strong> {userData.email}</p>
+              <p style={{ fontSize: '1.2rem' }}><strong>Bio:</strong> {userData.bio}</p>
+              <p style={{ fontSize: '1.2rem' }}><strong>LinkedIn:</strong> <a href={userData.linkedIn} target="_blank" rel="noreferrer" style={{ color: '#007bff' }}>View LinkedIn</a></p>
+              {/* Display other social media links */}
+              <button style={styles.button} onClick={() => setEditMode(true)}>Edit Profile</button>
+            </>
+          )}
+        </div>
+        <div style={styles.profilePicContainer}>
+          <img src={userData.profilePic} alt="Profile" style={styles.profilePic} />
+        </div>
+      </div>
+      <Footer />
+    </>
   );
 }
 
