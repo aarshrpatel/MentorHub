@@ -12,9 +12,9 @@ function MentorCard({ mentor }) {
       transition={{ duration: 0.3 }}
     >
         <div style={styles.card}>
-        <h3>{mentor.firstName} {mentor.lastName}</h3>
-        <p>{mentor.area}</p>
-        <p>{mentor.rating} out of 5 stars</p>
+          <h3>{mentor.firstName} {mentor.lastName}</h3>
+          <p>{mentor.area}</p>
+          <p>{mentor.rating} out of 5 stars</p>
         </div>
     </motion.div>
   );
@@ -37,7 +37,8 @@ const styles = {
         transform: 'scale(1.05)',
         boxShadow: '0 10px 15px linear-gradient(135deg, #DE3235, #0093E9)',
       },
-      width: '100vw',
+      width: '100%',
+      height: '100%',
       boxSizing: 'border-box',
     },
     // Add more styles for inner elements

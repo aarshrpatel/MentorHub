@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import Navbar from '../components/Navbar'; // Ensure you have a Navbar component
-import Footer from '../components/Footer'; // Ensure you have a Footer component
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import axios from 'axios';
 import MentorList from '../components/MentorList';
+import { SocialIcon } from 'react-social-icons';
 
 function DashboardPage() {
   const [mentors, setMentors] = useState([]);
@@ -16,6 +17,21 @@ function DashboardPage() {
   const getMentors = () => {
     return mentors;
   };
+
+  const [userData, setUserData] = useState(() => {
+    const storedData  = localStorage.getItem('currentUser');
+    return storedData ? JSON.parse(storedData) : {
+      profilePicture: 'https://media.licdn.com/dms/image/D5603AQEIbgcRzl1AOA/profile-displayphoto-shrink_200_200/0/1694898750748?e=1718236800&v=beta&t=_e8OkrL2rp1iYVUS3myyv6mFWZ4H4bJYEnUdMKqDgWk', // Increased size of the placeholder image
+      firstName: "Thien",
+      lastName: "Le",
+      email: "thienle210303@example.com",
+      bio: "Hi there",
+      linkedin: "https://linkedin.com/in/thienle210303",
+      github: "https://github.com/thienle210303"
+    };
+  });
+
+  userData.name = userData.firstName + " " + userData.lastName;
 
   return (
     <div style={styles.pageContainer}>
@@ -42,11 +58,9 @@ function DashboardPage() {
       {/* Profile Container */}
       <div style={styles.profileContainer}>
         <h2>Your Profile</h2>
-        {/* Example Profile Picture, replace 'user.picture' with your image path */}
-        <img src="https://media.licdn.com/dms/image/D5603AQEIbgcRzl1AOA/profile-displayphoto-shrink_200_200/0/1694898750748?e=1718236800&v=beta&t=_e8OkrL2rp1iYVUS3myyv6mFWZ4H4bJYEnUdMKqDgWk" alt="Profile" style={styles.profilePicture} />
-        <p style={styles.name}>Name: John Doe</p>
-        <p style={styles.email}>Email: example@example.com</p>
-        {/* Other user-related information can go here */}
+        <img src={userData.profilePicture} alt="Profile" style={styles.profilePicture} />
+        <p style={styles.name}><strong>Name:</strong> {userData.name}</p>
+        <p style={styles.email}><strong>Email:</strong> {userData.email}</p>
       </div>
 
       <Footer />
@@ -63,10 +77,11 @@ const styles = {
   },
   dashboardContainer: {
     display: 'flex',
-    justifyContent: 'center', // Centered horizontally
+    justifyContent: 'left', // Centered horizontally
     alignItems: 'center', // Centered vertically
     marginTop: '20px',
     marginBottom: '20px',
+    marginLeft: '15%',
     width: '100%', // Full width
   },
   title: {
@@ -97,9 +112,11 @@ const styles = {
     border: '1px solid black', // Added border
   },
   name: {
+    fontSize: '1rem',
     marginBottom: '5px', // Reduced margin
   },
   email: {
+    fontSize: '1rem',
     marginTop: '5px', // Reduced margin
   },
   dashboardTextContainer: {
@@ -108,22 +125,23 @@ const styles = {
   },
   centered: {
     display: 'flex',
-    justifyContent: 'center', // Centered horizontally
+    justifyContent: 'left', // Centered horizontally
+    margin: '10px',
     marginBottom: '20px', // Added margin to prevent overlap with the footer
   },
   recommendedContainer: {
     padding: '20px',
     borderRadius: '8px',
     boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
-    width: '350px', // Adjusted width //'fit-content' also works
+    width: '60vw', // Adjusted width //'fit-content' also works
     height: '500px', // Adjusted height
     background: '#FFFFFF',
-    textAlign: 'center', // Centered text
+    textAlign: 'left', // Centered text
   },
   recommendedContent: {
     display: 'flex',
     flexDirection: 'column', // Vertical list
-    alignItems: 'center', // Centered horizontally
+    alignItems: 'left', // Centered horizontally
   },
   recommendedTitle: {
     padding: '10px',
