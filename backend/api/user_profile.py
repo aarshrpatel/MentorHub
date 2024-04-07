@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request, session
 from model.User import get_user, update_user_profile
+from model.Student import get_student, to_student_json
 from model.database_func import *
 from model.data_constants import *
 from model.recommendation_algorithm import *
@@ -13,10 +14,12 @@ def get_all_mentor_profile():
 
 @user_profile_blueprint.route('/api/recommendations', methods=['GET'])
 def get_recommendations():
-    user_data = get_user(session['email'])
+    user_data = get_student(session.get('email'))
+    user_data = to_student_json(user_data)
     mentors = read_all_mentor_info()
     recommended_mentors = top_matches(user_data, mentors)
     return jsonify(recommended_mentors), 200
+
 # @user_profile_blueprint.route('/api/profileUpdate', methods=['PUT'])
 # def update_user_profile():
 #     user_data = request.json

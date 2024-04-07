@@ -33,7 +33,7 @@ def logout():
 @auth_blueprint.route('/api/check_login', methods=['GET'])
 def check_login():
     if 'email' in session:
-        return jsonify({'logged_in': True, 'username': session['username']})
+        return jsonify({'logged_in': True, 'email': session['email']})
     else:
         return jsonify({'logged_in': False})
 

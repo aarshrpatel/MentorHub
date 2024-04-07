@@ -4,12 +4,9 @@ from .database_func import read_all_mentor_info, read_all_student_info
 def calculate_match_score(mentee, mentor):
     score = 0
     # Interest match: 10 points for each shared interest
-    shared_interests = set(mentee["interests"]) & set(mentor["interests"])
+    print(mentee["interests"])
+    shared_interests = set(mentee["interests"]) & set(mentor["area"])
     score += len(shared_interests) * 10
-    
-    # Occupation match: 20 points if mentee's desired occupation matches mentor's
-    if mentee["occupation"] in mentor["occupation"]:
-        score += 20
     
     return score
 
