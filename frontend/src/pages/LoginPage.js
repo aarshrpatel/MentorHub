@@ -9,7 +9,8 @@ function LoginPage() {
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isHovered, setIsHovered] = useState(false);
+  const [isLoginHovered, setIsLoginHovered] = useState(false);
+  const [isSignUpHovered, setIsSignUpHovered] = useState(false);
 
   const pageStyle = {
     display: 'flex',
@@ -37,14 +38,21 @@ function LoginPage() {
   };
 
   const buttonStyle = {
-    padding: '10px',
+    marginTop: '20px',
+    padding: '10px 30px',
     fontSize: '16px',
     fontWeight: 'bold',
-    color: isHovered ? '#fff' : 'black',
-    background: isHovered ? 'black' : 'transparent',
+    color: 'black',
+    background: 'transparent',
     border: 'solid black 5px',
     borderRadius: '5px',
     cursor: 'pointer',
+    textDecoration: 'none',
+  };
+
+  const buttonHoverStyle = {
+    color: 'white',
+    background: 'black',
   };
 
   const linkStyle = {
@@ -97,13 +105,22 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button style={buttonStyle}
+        
+         <button style={{ ...buttonStyle, ...(isLoginHovered ? buttonHoverStyle : null) }}
           onClick={handleSubmit}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          onMouseEnter={() => setIsLoginHovered(true)}
+          onMouseLeave={() => setIsLoginHovered(false)}
         >
           Log In
-        </button>
+        </button> 
+        <Link
+        to="/signup"
+        style={{ ...buttonStyle, ...(isSignUpHovered ? buttonHoverStyle : null) }}
+        onMouseEnter={() => setIsSignUpHovered(true)}
+        onMouseLeave={() => setIsSignUpHovered(false)}
+      >
+        Sign Up
+      </Link>
       </form>
       <Link to="/" style={linkStyle}>Back to Home</Link>
     </div>

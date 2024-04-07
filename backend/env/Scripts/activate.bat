@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\Programming\Project\mentorhub\backend\env
+set VIRTUAL_ENV=C:\Users\Max\Documents\MentorHub\MentorHub\backend\env
 
 if not defined PROMPT set PROMPT=$P$G
 

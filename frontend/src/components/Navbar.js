@@ -27,7 +27,7 @@ function Navbar() {
         <Link to="/discovery" style={styles.navLink}>Discovery</Link>
         <Link to="/dashboard" style={styles.navLink}>Dashboard</Link>
         <Link to="/profile" style={styles.navLink}>Profile</Link>
-        <Link to="/about" style={styles.navLink}>About Us</Link>
+        
         <button style={styles.logoutButton} onClick={handleLogout}>Logout</button>
       </div>
     </nav>
