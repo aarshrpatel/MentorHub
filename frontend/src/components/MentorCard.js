@@ -35,8 +35,10 @@ const styles = {
       transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
       ':hover': {
         transform: 'scale(1.05)',
-        boxShadow: '0 10px 15px rgba(0, 0, 0, 0.2)',
+        boxShadow: '0 10px 15px linear-gradient(135deg, #DE3235, #0093E9)',
       },
+      width: '100vw',
+      boxSizing: 'border-box',
     },
     // Add more styles for inner elements
   };

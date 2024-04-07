@@ -15,7 +15,7 @@ const styles = {
   list: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '10px',
+    width: '100vw',
   }
 };
 

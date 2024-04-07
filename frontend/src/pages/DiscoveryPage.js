@@ -33,11 +33,6 @@ const DiscoveryPage = () => {
       <NavBar />
       <div style={{ textAlign: 'center', margin: '20px', minHeight: '85vh' }}>
         <h1 style={{ marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>Discovery</h1>
-        <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ flex: '1', marginRight: '10px' }}>
-            <input type="text" placeholder="Search" style={{ padding: '10px', width: '90%' }} />
-          </div>
-        </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px 10px', justifyContent: 'center' }}>
           {areas.map((area, index) => (
             <button 
