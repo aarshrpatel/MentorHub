@@ -81,7 +81,7 @@ const styles = {
     borderRadius: '8px',
     boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
     width: '15%',
-    height: '20%', // Adjusted height
+    height: '30%', // Adjusted height
     background: '#FFFFFF',
     display: 'flex',
     flexDirection: 'column',
