@@ -38,10 +38,11 @@ const styles = {
     marginTop: '10px',
     padding: '10px 20px',
     fontSize: '16px',
-    color: 'white',
-    backgroundColor: 'red',
+    color: 'black',
+    fontWeight: 'bold',
+    backgroundColor: '#DE3235',
     border: 'solid black 2px',
-    borderRadius: '5px',
+    borderRadius: '10px',
     cursor: 'pointer',
   },
   navbar: {
@@ -69,7 +70,7 @@ const styles = {
     color: 'black',
     backgroundColor: 'white',
     border: 'solid black 2px',
-    borderRadius: '5px',
+    borderRadius: '10px',
     cursor: 'pointer',
     textDecoration: 'none',
   }
