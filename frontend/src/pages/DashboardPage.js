@@ -87,6 +87,8 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    minHeight: '200px', // Adjusted height
+    minWidth: '250px', // Adjusted width
   },
   profilePicture: {
     width: '100px', // Adjusted size
