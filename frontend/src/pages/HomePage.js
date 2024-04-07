@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import mentorhublogo from '../assets/mentorhub-logo.png';
 
 function HomePage() {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isStartedHovered, setIsStartedHovered] = useState(false);
+  const [isAboutHovered, setIsAboutHovered] = useState(false);
 
   const imageStyle = {
     width: '200px',
@@ -27,24 +28,39 @@ function HomePage() {
     padding: '10px 30px',
     fontSize: '16px',
     fontWeight: 'bold',
-    color: isHovered ? 'white' : 'black',
-    background: isHovered ? 'black' : 'transparent',
+    color: 'black',
+    background: 'transparent',
     border: 'solid black 5px',
     borderRadius: '5px',
     cursor: 'pointer',
     textDecoration: 'none',
   };
 
+  const buttonHoverStyle = {
+    color: 'white',
+    background: 'black',
+  };
+
   return (
     <div style={homePageStyle}>
-      <img src={ mentorhublogo } alt='MentorHub Logo' style={imageStyle}/>
+      <img src={mentorhublogo} alt='MentorHub Logo' style={imageStyle} />
       <h1>Welcome to Our Application</h1>
       <p>Connect and grow with mentors from around the world.</p>
-      <Link to="/login" style={buttonStyle} 
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+      <Link
+        to="/login"
+        style={{ ...buttonStyle, ...(isStartedHovered ? buttonHoverStyle : null) }}
+        onMouseEnter={() => setIsStartedHovered(true)}
+        onMouseLeave={() => setIsStartedHovered(false)}
       >
         Get Started
+      </Link>
+      <Link
+        to="/about"
+        style={{ ...buttonStyle, ...(isAboutHovered ? buttonHoverStyle : null) }}
+        onMouseEnter={() => setIsAboutHovered(true)}
+        onMouseLeave={() => setIsAboutHovered(false)}
+      >
+        About Us
       </Link>
     </div>
   );
