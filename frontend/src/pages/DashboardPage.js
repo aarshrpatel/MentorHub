@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'; // Ensure you have a Navbar component
 import Footer from '../components/Footer'; // Ensure you have a Footer component
 
 function DashboardPage() {
+  
   return (
     <div style={styles.pageContainer}>
       <Navbar />

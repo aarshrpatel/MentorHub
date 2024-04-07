@@ -69,6 +69,8 @@ function LoginPage() {
       });
 
       if (response.status === 200) {
+        const userData = response.data;
+        localStorage.setItem('currentUser', JSON.stringify(userData));
         navigate("/dashboard");
       } else {
         alert("Failed to login:", response.statusText);

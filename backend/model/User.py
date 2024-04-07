@@ -5,7 +5,7 @@ from .database_func import read_data, write_data
 from .data_constants import *
 
 class User:
-    def __init__(self, id, email, username, first_name, last_name, date_of_birth, profile_picture_url, location):
+    def __init__(self, id, email, username, first_name, last_name, date_of_birth, profile_picture_url, github, linkedin, location):
         self.id = id
         self.email = email
         self.username = username
@@ -13,6 +13,8 @@ class User:
         self.last_name = last_name
         self.date_of_birth = date_of_birth
         self.profile_picture_url = profile_picture_url
+        self.github = github
+        self.linkedin = linkedin
         self.location = location
         self.registration_date = datetime.now().date()
         self.last_login_date = datetime.now().date()
@@ -47,7 +49,7 @@ class User:
     def _generate_id():
         return uuid4()
     
-def to_json(user) -> dict:
+def to_user_json(user) -> dict:
     return {
         "id": user.id,
         "email": user.email,
@@ -57,6 +59,8 @@ def to_json(user) -> dict:
         "dateOfBirth": str(user.date_of_birth),
         "profilePicture": user.profile_picture_url,
         "location": user.location,
+        "github": user.github,
+        "linkedin": user.linkedin,
         "registrationDate": str(user.registration_date),
         "lastLoginDate": str(user.last_login_date)
     }
@@ -73,7 +77,9 @@ def get_user(email) -> User:
                         user_info['lastName'], 
                         user_info['dateOfBirth'], 
                         user_info['profilePicture'], 
-                        user_info['location']
+                        user_info["github"],
+                        user_info["linkedin"],
+                        user_info['location'],
             )
             return user
     return 0

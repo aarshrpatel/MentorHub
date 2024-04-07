@@ -1,14 +1,4 @@
-# Sample data: List of mentors and a mentee
-mentors = [
-    {"name": "Mentor A", "interests": ["Python", "Data Science"], "occupation": "Data Scientist"},
-    {"name": "Mentor B", "interests": ["JavaScript", "Web Development"], "occupation": "Web Developer"},
-    {"name": "Mentor C", "interests": ["Python", "Machine Learning"], "occupation": "Research Scientist"}
-]
-
-mentee = {"interests": ["Python", "Machine Learning"], "occupation": "Data Scientist"}
-
-from database_func import read_all_mentor_info;
-from database_func import read_all_student_info;
+from .database_func import read_all_mentor_info, read_all_student_info
 
 # Function to calculate match score
 def calculate_match_score(mentee, mentor):
@@ -35,13 +25,10 @@ def find_best_matches(mentee, mentors):
     return scores
 
 def recommend_mentors(mentees_interests, mentors_list):
-    recommended_mentors = []
-
-    find_best_matches(mentees_interests, mentors_list)
+    recommended_mentors = find_best_matches(mentees_interests, mentors_list)
     return recommended_mentors
 
 # Get matches
-
 def top_matches(mentee, mentors, n=3):
     scores = find_best_matches(mentee, mentors)
     return scores[:n]
