@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Navbar() {
   return (
@@ -10,7 +11,6 @@ function Navbar() {
         <Link to="/profile" style={styles.navLink}>Profile</Link>
         <Link to="/about" style={styles.navLink}>About Us</Link>
         <button style={styles.logoutButton} >Logout</button>
-        {/* Add more links as needed */}
       </div>
     </nav>
   );

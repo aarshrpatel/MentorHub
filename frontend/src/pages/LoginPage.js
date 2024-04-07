@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
+
 import { Link, useNavigate } from 'react-router-dom';
 import mentorhublogo from '../assets/mentorhub-logo.png';
 import LoginButton from '../components/LoginButton';
 
 function LoginPage() {
   let navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const pageStyle = {
     display: 'flex',
@@ -53,7 +57,24 @@ function LoginPage() {
     borderRadius: '50%'
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    try {
+      const response = await axios.post('/api/login', {
+        email,
+        password
+      });
+
+      if (response.status === 200) {
+        navigate("/dashboard");
+      } else {
+        alert("Failed to login:", response.statusText);
+      }
+    } catch (error) {
+      console.error('Failed to login:', error.message);
+    }
+  }
 
   return (
     <div style={pageStyle}>
@@ -64,15 +85,17 @@ function LoginPage() {
           type="email"
           placeholder="Email"
           style={inputStyle}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
           placeholder="Password"
           style={inputStyle}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" style={buttonStyle} onClick={() => navigate("/dashboard")}>Log In</button>
+        <button style={buttonStyle} onClick={handleSubmit}>Log In</button>
       </form>
       <Link to="/" style={linkStyle}>Back to Home</Link>
     </div>

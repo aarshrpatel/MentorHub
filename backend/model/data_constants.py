@@ -1,6 +1,6 @@
 import os
 
-database_path = os.path.join(os.getcwd(), 'database', '')
+database_path = os.path.join(os.getcwd(), '..', 'database', '')
 USER_FILE = f"{database_path}user.csv"
 MENTOR_FILE = f"{database_path}mentors.csv"
 STUDENT_FILE = f"{database_path}student.csv"
