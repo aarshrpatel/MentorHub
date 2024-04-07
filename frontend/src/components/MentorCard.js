@@ -12,9 +12,9 @@ function MentorCard({ mentor }) {
       transition={{ duration: 0.3 }}
     >
         <div style={styles.card}>
-        <h3>{mentor.name}</h3>
-        <p>{mentor.bio}</p>
-        {/* Add more mentor details here */}
+        <h3>{mentor.firstName} {mentor.lastName}</h3>
+        <p>{mentor.area}</p>
+        <p>{mentor.rating} out of 5 stars</p>
         </div>
     </motion.div>
   );

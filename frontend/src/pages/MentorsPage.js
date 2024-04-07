@@ -13,10 +13,10 @@ function MentorsPage() {
   const [searchPerformed, setSearchPerformed] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/mentors/category/${category}')
+    axios.get('/api/mentors')
       .then(response => setMentors(response.data))
       .catch(error => console.error('Error fetching mentors:', error));
-  }, [category]);
+  }, []);
 
   const handleSearchChange = (query) => {
     setSearchQuery(query.toLowerCase());

@@ -54,15 +54,15 @@ def generate_database():
         [id[2], email[2], 'tL', 'Thien', 'Le', '03-21-2003', '000000000', "picture", 'location']
     ]
 
-    headerStudent = ['id', 'interests', 'level', 'goals', 'status']
+    headerStudent = ['id', 'level', 'interests', 'goals', 'status']
     dataStudent = [
-        [id[1], 'Freshman', 'CS', 'I want to a Professional', 'active'],
-        [id[2], 'Junior', 'CS', 'I want to retire', 'almost retire']
+        [id[1], 'Freshman', 'Computer Science', 'I want to a Professional', 'active'],
+        [id[2], 'Junior', 'Computer Science', 'I want to retire', 'almost retire']
     ]
 
     headerMentor = ['id', 'area', 'bio', 'hourlyRate', 'availability', 'rating', 'status']
     dataMentor = [
-        [id[0], 'CS', "I am Aarsh Patel", 100, '6pm - 8pm', 0, 'active']
+        [id[0], 'Computer Science', "I am Aarsh Patel", 100, '6pm - 8pm', 0, 'active']
     ]
 
     headerAccount = ["email", "password"]

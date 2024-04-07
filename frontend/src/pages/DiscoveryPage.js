@@ -9,7 +9,7 @@ const DiscoveryPage = () => {
   // Define the list of educational areas
   const areas = [
     "Education",
-    "Career",
+    "Computer Science",
     "Business",
     "Lifestyle",
     "Technology",
