@@ -1,9 +1,9 @@
 from flask import Blueprint, request, session, jsonify, redirect, url_for, Response
-from model.database_func import read_data
+from model.database_func import read_data, read_all_mentor_info
 from model.User import User, get_user, to_json
 from model.data_constants import *
 
-auth_blueprint = Blueprint('auth', __name__)
+auth_blueprint = Blueprint('api', __name__)
 
 @auth_blueprint.route('/api/login', methods=['POST'])
 def login():

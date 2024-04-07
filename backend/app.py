@@ -2,8 +2,9 @@ import os, sys
 import datetime
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from model.database_func import generate_database
+from model.database_func import generate_database, read_all_mentor_info
 from api.auth import auth_blueprint
+from api.user_profile import user_profile_blueprint
 
 static_react = os.path.join(os.getcwd(), "frontend", "build")
 
@@ -22,7 +23,8 @@ def serve(path):
 
 # Register
 app.register_blueprint(auth_blueprint)
+app.register_blueprint(user_profile_blueprint)
 
 if __name__ == "__main__":
     generate_database()
-    app.run()
+    app.run(debug=1)

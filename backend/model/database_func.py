@@ -1,11 +1,12 @@
 import csv, json, os
-from data_constants import *
+from .data_constants import *
 from uuid import uuid4
 import shutil
 
 def read_data(file) -> list:
     if not os.path.isfile(file):
         raise ValueError(f"No file found {file}")
+    
     result = []
     try:
         with open(file, 'r') as f:
@@ -17,7 +18,9 @@ def read_data(file) -> list:
         print(f"Error reading data from {file}: {e}")
     return result
 
+
 def write_data(file, data) -> bool:
+
     mode = 'a' if os.path.isfile(file) else 'w'
     try:
         with open(file, mode, newline='') as f:
@@ -101,25 +104,21 @@ def read_all_student_info() -> list:
     students = read_data(STUDENT_FILE)
     users = read_data(USER_FILE)
 
-    students_hash = {student['id']: student for student in students}
+    users_hash = {user['id']: user for user in users}
 
-    for user in users:
-        user_id = user['id']
-        if user_id in students_hash:
-            user.update(students_hash[user_id])
-    return users
+    for student in students:
+        user_id = student['id']
+        if user_id in users_hash:
+            student.update(users_hash[user_id])
+    return students
 
 def read_all_mentor_info() -> list:
     mentors = read_data(MENTOR_FILE)
     users = read_data(USER_FILE)
+    users_hash = {user['id']: user for user in users}
 
-    mentors_hash = {mentor['id']: mentor for mentor in mentors}
-
-    for user in users:
-        user_id = user['id']
-        if user_id in mentors_hash:
-            user.update(mentors_hash[user_id])
-    return users
-
-if __name__ == "__main__":
-    a = read_all_user_info()
+    for mentor in mentors:
+        user_id = mentor['id']
+        if user_id in users_hash:
+            mentor.update(users_hash[user_id])
+    return mentors
