@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Navbar from '../components/Navbar'; // Ensure you have a Navbar component
 import Footer from '../components/Footer'; // Ensure you have a Footer component
+import axios from 'axios';
+import MentorList from '../components/MentorList';
 
 function DashboardPage() {
   const [mentors, setMentors] = useState([]);
@@ -33,7 +35,7 @@ function DashboardPage() {
       <div style={styles.centered}>
         <div style={styles.recommendedContainer}>
           <h2 style={styles.recommendedTitle}>Recommended Mentors</h2> {/* Updated text here */}
-          <MentorList mentors={getFilteredMentors()} />
+          <MentorList mentors={getMentors()} />
         </div>
       </div>
 
