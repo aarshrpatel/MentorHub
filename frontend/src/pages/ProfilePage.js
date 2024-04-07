@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { SocialIcon } from 'react-social-icons';
 
 function ProfilePage() {
   // Initial user data
-  const [userData, setUserData] = useState({
-    profilePic: 'https://media.licdn.com/dms/image/D5603AQEIbgcRzl1AOA/profile-displayphoto-shrink_200_200/0/1694898750748?e=1718236800&v=beta&t=_e8OkrL2rp1iYVUS3myyv6mFWZ4H4bJYEnUdMKqDgWk', // Increased size of the placeholder image
-    name: "Thien Le",
-    email: "thienle210303@example.com",
-    bio: "Hi there",
-    linkedIn: "https://linkedin.com/in/thienle210303",
-    github: "https://github.com/thienle210303"
+  const [userData, setUserData] = useState(() => {
+    const storedData  = localStorage.getItem('currentUser');
+    return storedData ? JSON.parse(storedData) : {
+      profilePicture: 'https://media.licdn.com/dms/image/D5603AQEIbgcRzl1AOA/profile-displayphoto-shrink_200_200/0/1694898750748?e=1718236800&v=beta&t=_e8OkrL2rp1iYVUS3myyv6mFWZ4H4bJYEnUdMKqDgWk', // Increased size of the placeholder image
+      firstName: "Thien",
+      lastName: "Le",
+      email: "thienle210303@example.com",
+      bio: "Hi there",
+      linkedin: "https://linkedin.com/in/thienle210303",
+      github: "https://github.com/thienle210303"
+    };
   });
+
+  userData.name = userData.firstName + " " + userData.lastName;
+
+
 
   // State to toggle edit mode
   const [editMode, setEditMode] = useState(false);
@@ -25,6 +33,10 @@ function ProfilePage() {
       [name]: value
     }));
   };
+
+  useEffect(() => {
+    localStorage.setItem('userData', JSON.stringify(userData));
+  }, [userData]);
 
   // Style objects
   const styles = {
@@ -84,7 +96,7 @@ function ProfilePage() {
               <input style={styles.input} type="text" name="name" value={userData.name} onChange={handleInputChange} />
               <input style={styles.input} type="email" name="email" value={userData.email} onChange={handleInputChange} />
               <textarea style={{ ...styles.input, height: '150px' }} name="bio" value={userData.bio} onChange={handleInputChange} />
-              <input style={styles.input} type="text" name="linkedIn" value={userData.linkedIn} onChange={handleInputChange} />
+              <input style={styles.input} type="text" name="linkedin" value={userData.linkedin} onChange={handleInputChange} />
               <input style={styles.input} type="text" name="github" value={userData.github} onChange={handleInputChange} />
 
               {/* Include other social media inputs here */}
@@ -96,14 +108,14 @@ function ProfilePage() {
               <p style={{ fontSize: '1.5rem' }}><strong>Name:</strong> {userData.name}</p>
               <p style={{ fontSize: '1.5rem' }}><strong>Email:</strong> {userData.email}</p>
               <p style={{ fontSize: '1.5rem' }}><strong>Bio:</strong> {userData.bio}</p>
-              <p style={{ fontSize: '1.5rem' }}><strong>LinkedIn:</strong> <SocialIcon url={userData.linkedIn} target="_blank" rel="noreferrer" /></p>
+              <p style={{ fontSize: '1.5rem' }}><strong>LinkedIn:</strong> <SocialIcon url={userData.linkedin} target="_blank" rel="noreferrer" /></p>
               <p style={{ fontSize: '1.5rem' }}><strong>Github:</strong> <SocialIcon url={userData.github} target="_blank" rel="noreferrer" /></p>
               <button style={styles.button} onClick={() => setEditMode(true)}>Edit Profile</button>
             </>
           )}
         </div>
         <div style={styles.profilePicContainer}>
-          <img src={userData.profilePic} alt="Profile" style={styles.profilePic} />
+          <img src={userData.profilePicture} alt="Profile" style={styles.profilePic} />
         </div>
       </div>
       <Footer />

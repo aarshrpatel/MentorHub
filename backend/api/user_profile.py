@@ -13,7 +13,7 @@ def get_all_mentor_profile():
 
 @user_profile_blueprint.route('/api/recommendations', methods=['GET'])
 def get_recommendations():
-    user_data = get_user(session['user_id'])
+    user_data = get_user(session['email'])
     mentors = read_all_mentor_info()
     recommended_mentors = top_matches(user_data, mentors)
     return jsonify(recommended_mentors), 200
