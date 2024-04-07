@@ -31,10 +31,15 @@ def find_best_matches(mentee, mentors):
     scores.sort(key=lambda x: x[1], reverse=True)
     return scores
 
-# Get matches
-matches = find_best_matches(mentee, mentors)
+def recommend_mentors(mentees_interests, mentors_list):
+    recommended_mentors = []
 
-# Display top 3 matches
-print("Top matches:")
-for match in matches[:3]:
-    print(f"{match[0]['name']} with score {match[1]}")
+    find_best_matches(mentees_interests, mentors_list)
+    return recommended_mentors
+
+# Get matches
+
+def top_matches(mentee, mentors, n=3):
+    scores = find_best_matches(mentee, mentors)
+    return scores[:n]
+
