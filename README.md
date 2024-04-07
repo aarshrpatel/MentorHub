@@ -14,5 +14,7 @@ npm run start
 
 # To use back end
 cd .\backend\
+python -m venv env
 .\env\Scripts\activate
+pip install -r requirements.txt or pip install -U flask-cors flask
 py app.py

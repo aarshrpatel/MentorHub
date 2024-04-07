@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Navbar() {
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+  }
+
   return (
     <nav style={styles.navbar}>
       <Link to="/" style={{ ...styles.navLink, ...styles.logo }}>MentorHub</Link>
@@ -10,7 +15,7 @@ function Navbar() {
         <Link to="/dashboard" style={styles.navLink}>Dashboard</Link>
         <Link to="/profile" style={styles.navLink}>Profile</Link>
         <Link to="/about" style={styles.navLink}>About Us</Link>
-        <button style={styles.logoutButton} >Logout</button>
+        <button style={styles.logoutButton} onClick={}>Logout</button>
       </div>
     </nav>
   );
