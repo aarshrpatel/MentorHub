@@ -7,6 +7,9 @@ mentors = [
 
 mentee = {"interests": ["Python", "Machine Learning"], "occupation": "Data Scientist"}
 
+from database_func import read_all_mentor_info;
+from database_func import read_all_student_info;
+
 # Function to calculate match score
 def calculate_match_score(mentee, mentor):
     score = 0

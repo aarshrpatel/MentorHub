@@ -2,7 +2,8 @@ import os, sys
 import datetime
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from model.database_func import generate_database, read_all_mentor_info
+from model.database_func import generate_database, read_all_mentor_info, read_all_student_info
+from model.recommendation_algorithm import calculate_match_score, find_best_matches, recommend_mentors, top_matches
 from api.auth import auth_blueprint
 from api.user_profile import user_profile_blueprint
 
