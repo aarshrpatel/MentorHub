@@ -39,47 +39,37 @@ function MentorsPage() {
     <div style={styles.container}>
       <Navbar />
       <h2 style={styles.h2}>Mentors</h2>
-      <div style={styles.page}>
+      {/* Dedicated container for SearchBar to ensure it takes full width */}
+      <div style={styles.searchContainer}>
         <SearchBar onSearch={handleSearchChange} onButtonClick={performSearch} />
-        <div>
-          <MentorList mentors={getFilteredMentors()} />
-        </div>
       </div>
+      {/* MentorList is now directly under container, so it naturally follows SearchBar */}
+      <MentorList mentors={getFilteredMentors()} />
       <Footer />
     </div>
   );
 }
 
+
 const styles = {
-    h2: {
-      textAlign: 'left',
-      fontSize: '36px',
-      margin: '20px 20px',
-    },
-    page: {
-      padding: '20px',
-      maxWidth: '1200px',
-      margin: '0',
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-      gap: '20px',
-    },
-    searchBar: {
-      width: '100%',
-      padding: '15px 20px',
-      fontSize: '18px',
-      border: '2px solid #007bff',
-      borderRadius: '25px',
-      marginBottom: '30px',
-      outline: 'none',
-    },
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      minHeight: '100vh',
-    },
-    // Add more styles as needed
-  };
+  h2: {
+    textAlign: 'left',
+    fontSize: '36px',
+    margin: '20px',
+  },
+  searchContainer: {
+    padding: '0 20px', // Adjust padding as needed
+    marginBottom: '20px', // Space between search bar and list
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+    overflowX: 'hidden', // Prevent horizontal scroll
+  },
+};
+
+
   
 
 export default MentorsPage;
