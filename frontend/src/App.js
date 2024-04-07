@@ -26,6 +26,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/profile" element={<ProfilePage />} /> {/* Add the ProfilePage route */}
         <Route path='/mentors' element={<MentorsPage />} />
+        <Route path='/mentors/:category' element={<MentorsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>

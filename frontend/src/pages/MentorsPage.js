@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import MentorList from '../components/MentorList';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 function MentorsPage() {
+  const { category } = useParams(); // Get the category from URL params
   const [mentors, setMentors] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/mentors')
+    axios.get('/api/mentors/category/${category}')
       .then(response => setMentors(response.data))
       .catch(error => console.error('Error fetching mentors:', error));
-  }, []);
+  }, [category]);
 
-  const handleSearch = (query) => {
+  const handleSearchChange = (query) => {
     setSearchQuery(query.toLowerCase());
+    setSearchPerformed(false); // Reset search performed flag on query change
+  };
+
+  const performSearch = () => {
+    setSearchPerformed(true); // Set flag to true when search is performed
   };
 
   const getFilteredMentors = () => {
+    if (!searchPerformed) return mentors; // Return all mentors if no search performed
     return mentors.filter(mentor =>
       mentor.name.toLowerCase().includes(searchQuery) ||
-      mentor.bio.toLowerCase().includes(searchQuery) // Add more conditions as needed
+      mentor.bio.toLowerCase().includes(searchQuery)
     );
   };
 
@@ -31,7 +40,7 @@ function MentorsPage() {
       <Navbar />
       <h2 style={styles.h2}>Mentors</h2>
       <div style={styles.page}>
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearchChange} onButtonClick={performSearch} />
         <MentorList mentors={getFilteredMentors()} />
       </div>
       <Footer />

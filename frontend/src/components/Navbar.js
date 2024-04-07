@@ -22,7 +22,7 @@ function Navbar() {
 
   return (
     <nav style={styles.navbar}>
-      <Link to="/" style={{ ...styles.navLink, ...styles.logo }}>MentorHub</Link>
+      <Link to="/" style={{ ...styles.logoLink, ...styles.logo }}>MentorHub</Link>
       <div style={styles.linksContainer}>
         <Link to="/discovery" style={styles.navLink}>Discovery</Link>
         <Link to="/dashboard" style={styles.navLink}>Dashboard</Link>
@@ -36,7 +36,7 @@ function Navbar() {
 
 const styles = {
   logoutButton: {
-    marginTop: '10px',
+    margin: 'auto',
     padding: '10px 20px',
     fontSize: '16px',
     color: 'black',
@@ -45,6 +45,7 @@ const styles = {
     border: 'solid black 2px',
     borderRadius: '10px',
     cursor: 'pointer',
+    opacity: '0.9',
   },
   navbar: {
     display: 'flex',
@@ -58,13 +59,14 @@ const styles = {
   logo: {
     fontWeight: 'bold',
     fontSize: '24px',
+    alignItems: 'center',
   },
   linksContainer: {
     display: 'flex',
     gap: '20px', // Creates space between the links
   },
-  navLink: {
-    marginTop: '10px',
+  logoLink: {
+    margin: 'auto 0',
     padding: '10px 20px',
     fontSize: '16px',
     fontWeight: 'bold',
@@ -74,6 +76,21 @@ const styles = {
     borderRadius: '10px',
     cursor: 'pointer',
     textDecoration: 'none',
+    opacity: '0.7',
+  },
+  navLink: {
+    margin: 'auto',
+    padding: '10px 20px',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: 'black',
+    backgroundColor: 'white',
+    border: 'solid black 2px',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    opacity: '0.7',
+
   }
 };
 

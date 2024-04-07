@@ -1,15 +1,21 @@
 import React from 'react';
+import { useState } from 'react';
 
-function SearchBar({ onSearch }) {
-  return (
-    <input
-      type="text"
-      onChange={(e) => onSearch(e.target.value)}
-      style={styles.searchBar}
-      placeholder="Search mentors..."
-    />
-  );
-}
+function SearchBar({ onSearch, onButtonClick }) {
+    const [inputValue, setInputValue] = useState('');
+  
+    return (
+      <div>
+        <input
+          type="text"
+          onChange={(e) => setInputValue(e.target.value)}
+          style={styles.searchBar}
+          placeholder="Search mentors..."
+        />
+        <button onClick={() => onButtonClick(inputValue)} style={styles.button}>Search</button>
+      </div>
+    );
+  }
 
 const styles = {
   searchBar: {
@@ -17,6 +23,12 @@ const styles = {
     padding: '10px',
     marginBottom: '20px',
     fontSize: '16px',
+  },
+
+  button: {
+    cursor: 'pointer',
+    padding: '10px',
+    margin: '5px',
   }
 };
 
