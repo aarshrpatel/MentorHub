@@ -1,17 +1,15 @@
-from uuid import uuid3
+from uuid import uuid4
 
 class Relationship:
-    def __init__(self, relationship_id, mentor_id, student_id, relationship_type, start_date, end_date):
-        self.relationship_id = self._setID(relationship_id)
+    def __init__(self, relationship_id, mentor_id, student_id, subject, start_date, end_date):
+        self.id = relationship_id
         self.mentor_id = mentor_id
         self.student_id = student_id
-        self.relationship_type = relationship_type
+        self.subject = subject
         self.start_date = start_date
         self.end_date = end_date
 
-    def _setID(self, id):
-        if self.user_id:
-            return
-        if not id:
-            return uuid3()
-        return id
+        if id is None:
+            self.id = self._generate_id()
+    def _generate_id():
+        return uuid4()

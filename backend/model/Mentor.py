@@ -1,18 +1,17 @@
-from uuid import uuid3
+from uuid import uuid4
 
 class Mentor:
     def __init__(self, mentor_id, expertise, bio, hourly_rate, availability, rating, status):
-            self.mentor_id = self._setID(mentor_id)
-            self.expertise = expertise
-            self.bio = bio
-            self.hourly_rate = hourly_rate
-            self.availability = availability
-            self.rating = rating
-            self.status = status
+        self.id = mentor_id
+        self.expertise = expertise
+        self.bio = bio
+        self.hourly_rate = hourly_rate
+        self.availability = availability
+        self.rating = rating
+        self.status = status
 
-    def _setID(self, id):
-        if self.user_id:
-            return
-        if not id:
-            return uuid3()
-        return id
+        if id is None:
+            self.id = self._generate_id()
+            
+    def _generate_id():
+        return uuid4()

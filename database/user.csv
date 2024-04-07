@@ -1,7 +1,4 @@
 id,email,username,firstName,lastName,dateOfBirth,phoneNumber,profilePicture,location
-a9a27c5e-6df8-4c77-a65a-5aa00655ca51,max@gmail,mF,Maximus,Fernandeg,10-22-2004,000000000,picture,location
-96dc0da4-b2a6-41db-a07d-2111e07a2762,aarsh@gmail,aP,Aarsh,Patel,09-19-2004,000000000,picture,location
-d915d3a4-b624-41b3-a35d-3b663493f3d4,thien@gmail,tL,Thien,Le,03-21-2003,000000000,picture,location
-e40a5eb2-16cc-405e-ab1a-90a23ade5e1e,max@gmail,mF,Maximus,Fernandeg,10-22-2004,000000000,picture,location
-dfaf5be2-5552-4bd4-8d88-afdb7a3abf9a,aarsh@gmail,aP,Aarsh,Patel,09-19-2004,000000000,picture,location
-21edf68c-2d78-4b42-8eee-425af3011e5c,thien@gmail,tL,Thien,Le,03-21-2003,000000000,picture,location
+b9e87a87-6bb3-4d45-8e1f-bf161b229d75,aarsh@gmail.com,aP,Aarsh,Patel,09-19-2004,000000000,picture,location
+ae607b61-65f7-4b16-88b3-84eb5ef71cfe,max@gmail.com,mF,Maximus,Fernandeg,10-22-2004,000000000,picture,location
+7db58d96-b1c3-419f-aa56-bd6ab5f79a47,thien@gmail.com,tL,Thien,Le,03-21-2003,000000000,picture,location
