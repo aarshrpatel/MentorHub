@@ -31,21 +31,38 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
+    backgroundColor: '#f8f9fa',
   },
   dashboardContainer: {
-    textAlign: 'center',
+    margin: 'auto',
+    textAlign: 'left',
     marginTop: '50px',
+    width: '85%',
     flex: '1',
   },
   title: {
     color: '#333',
   },
   profileContainer: {
-    marginTop: '20px',
+    marginTop: 'auto', // Pushes the content to the top of the page\
+    marginBottom: 'auto', // Pushes the content to the bottom of the page
+    marginLeft: '20px', // Pushes the content to the right of the page
     padding: '20px',
     borderRadius: '8px',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
     display: 'inline-block',
+    backgroundColor: 'white',
+    minHeight: '200px',
+    minWidth: '200px',
+    width: 'fit-content',
+    height: 'fit-content',
+    img: {
+      width: '100px',
+      height: '100px',
+      borderRadius: '50%',
+      objectFit: 'cover',
+    }, 
+    textAlign: 'center',
   },
   profilePicture: {
     width: '100px',

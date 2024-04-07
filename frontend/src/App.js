@@ -10,6 +10,7 @@ import SignupPage from './pages/SignupPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import MentorsPage from './pages/MentorsPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/profile" element={<ProfilePage />} /> {/* Add the ProfilePage route */}
+        <Route path="/mentors" element={<MentorsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
