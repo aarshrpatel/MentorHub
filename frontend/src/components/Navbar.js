@@ -83,7 +83,7 @@ const styles = {
     padding: '10px 20px',
     fontSize: '16px',
     fontWeight: 'bold',
-    color: 'black',
+    color: 'linear-gradient(135deg, #DE3235, #0093E9)',
     backgroundColor: 'white',
     border: 'solid black 2px',
     borderRadius: '10px',

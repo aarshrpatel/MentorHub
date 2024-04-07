@@ -9,6 +9,7 @@ function LoginPage() {
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isHovered, setIsHovered] = useState(false);
 
   const pageStyle = {
     display: 'flex',
@@ -38,9 +39,10 @@ function LoginPage() {
   const buttonStyle = {
     padding: '10px',
     fontSize: '16px',
-    color: '#fff',
-    background: '#333',
-    border: 'none',
+    fontWeight: 'bold',
+    color: isHovered ? '#fff' : 'black',
+    background: isHovered ? 'black' : 'transparent',
+    border: 'solid black 5px',
     borderRadius: '5px',
     cursor: 'pointer',
   };
@@ -48,7 +50,7 @@ function LoginPage() {
   const linkStyle = {
     marginTop: '20px',
     textDecoration: 'none',
-    color: '#333',
+    color: '#000',
   };
 
   const imageStyle = {
@@ -95,7 +97,13 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button style={buttonStyle} onClick={handleSubmit}>Log In</button>
+        <button style={buttonStyle}
+          onClick={handleSubmit}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          Log In
+        </button>
       </form>
       <Link to="/" style={linkStyle}>Back to Home</Link>
     </div>
