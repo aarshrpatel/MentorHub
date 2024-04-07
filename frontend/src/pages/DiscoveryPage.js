@@ -29,7 +29,7 @@ const DiscoveryPage = () => {
 
   return (
     <>
-    <div>
+    <div style={styles.container}>
       <NavBar />
       <div style={{ textAlign: 'center', margin: '20px', minHeight: '85vh' }}>
         <h1 style={{ marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>Discovery</h1>
@@ -63,6 +63,14 @@ const DiscoveryPage = () => {
     <Footer />
     </>
   );
+};
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
 };
 
 export default DiscoveryPage;
