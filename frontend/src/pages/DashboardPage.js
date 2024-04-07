@@ -3,6 +3,18 @@ import Navbar from '../components/Navbar'; // Ensure you have a Navbar component
 import Footer from '../components/Footer'; // Ensure you have a Footer component
 
 function DashboardPage() {
+  const [mentors, setMentors] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/recommendations')
+      .then(response => setMentors(response.data))
+      .catch(error => console.error('Error fetching mentors:', error));
+  }, []);
+
+  const getMentors = () => {
+    return mentors;
+  };
+
   return (
     <div style={styles.pageContainer}>
       <Navbar />
@@ -21,21 +33,7 @@ function DashboardPage() {
       <div style={styles.centered}>
         <div style={styles.recommendedContainer}>
           <h2 style={styles.recommendedTitle}>Recommended Mentors</h2> {/* Updated text here */}
-          <div style={styles.recommendedContent}>
-            {/* Circular Images with Names */}
-            <div style={styles.circularImageContainer}>
-              <img src="https://via.placeholder.com/80" alt="User 1" style={styles.circularImage} />
-              <p>User 1</p>
-            </div>
-            <div style={styles.circularImageContainer}>
-              <img src="https://via.placeholder.com/80" alt="User 2" style={styles.circularImage} />
-              <p>User 2</p>
-            </div>
-            <div style={styles.circularImageContainer}>
-              <img src="https://via.placeholder.com/80" alt="User 3" style={styles.circularImage} />
-              <p>User 3</p>
-            </div>
-          </div>
+          <MentorList mentors={getFilteredMentors()} />
         </div>
       </div>
 
