@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import mentorhublogo from '../assets/mentorhub-logo.png';
 import LoginButton from '../components/LoginButton';
-import LogoutButton from '../components/LogoutButton';
 
 function LoginPage() {
   let navigate = useNavigate();
@@ -60,8 +59,21 @@ function LoginPage() {
     <div style={pageStyle}>
       <img src={ mentorhublogo } alt='MentorHub Logo' style={imageStyle}/>
       <h1>Login to Your Account</h1>
-      <LoginButton style={buttonStyle}/>
-      <LogoutButton style={buttonStyle}/>
+      <form style={formStyle}>
+        <input
+          type="email"
+          placeholder="Email"
+          style={inputStyle}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          style={inputStyle}
+          required
+        />
+        <button type="submit" style={buttonStyle} onClick={() => navigate("/dashboard")}>Log In</button>
+      </form>
       <Link to="/" style={linkStyle}>Back to Home</Link>
     </div>
   );
