@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
+import {SocialIcon} from 'react-social-icons';
 function ProfilePage() {
   // Initial user data
   const [userData, setUserData] = useState({
     profilePic: 'https://via.placeholder.com/200', // Increased size of the placeholder image
-    name: "John Doe",
-    email: "john.doe@example.com",
-    bio: "Enthusiastic developer and lifelong learner.",
-    linkedIn: "https://linkedin.com/in/johndoe",
-    // Add more social links if necessary
+    name: "Thien Le",
+    email: "thienle210303@example.com",
+    bio: "Hi there",
+    linkedIn: "https://linkedin.com/in/thienle210303",
+    github: "https://github.com/thienle210303"
   });
 
   // State to toggle edit mode
@@ -92,8 +92,8 @@ function ProfilePage() {
               <p style={{ fontSize: '1.2rem' }}><strong>Name:</strong> {userData.name}</p>
               <p style={{ fontSize: '1.2rem' }}><strong>Email:</strong> {userData.email}</p>
               <p style={{ fontSize: '1.2rem' }}><strong>Bio:</strong> {userData.bio}</p>
-              <p style={{ fontSize: '1.2rem' }}><strong>LinkedIn:</strong> <a href={userData.linkedIn} target="_blank" rel="noreferrer" style={{ color: '#007bff' }}>View LinkedIn</a></p>
-              {/* Display other social media links */}
+              <p style={{ fontSize: '1.2rem' }}><strong>LinkedIn:</strong> <SocialIcon url={userData.linkedIn} target="_blank" rel="noreferrer"/></p>
+              <p style={{ fontSize: '1.2rem' }}><strong>Github:</strong> <SocialIcon url={userData.github} target="_blank" rel="noreferrer"/></p>
               <button style={styles.button} onClick={() => setEditMode(true)}>Edit Profile</button>
             </>
           )}
