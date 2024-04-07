@@ -41,7 +41,9 @@ function MentorsPage() {
       <h2 style={styles.h2}>Mentors</h2>
       <div style={styles.page}>
         <SearchBar onSearch={handleSearchChange} onButtonClick={performSearch} />
-        <MentorList mentors={getFilteredMentors()} />
+        <div>
+          <MentorList mentors={getFilteredMentors()} />
+        </div>
       </div>
       <Footer />
     </div>
