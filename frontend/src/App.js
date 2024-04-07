@@ -10,6 +10,7 @@ import ProfilePage from './pages/ProfilePage'; // Import the ProfilePage
 import AboutPage from './pages/AboutPage'; 
 import SignupPage from './pages/SignupPage';
 import NotFoundPage from './pages/NotFoundPage';
+import MentorsPage from './pages/MentorsPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -24,7 +25,8 @@ function App() {
         <Route path="/discovery" element={<DiscoveryPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/profile" element={<ProfilePage />} /> {/* Add the ProfilePage route */}
-        <Route path="/about" element={<AboutPage />} />
+        <Route path='/mentors' element={<MentorsPage />} />
+        <Route path='/mentors/:category' element={<MentorsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>

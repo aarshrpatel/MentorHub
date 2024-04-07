@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
+
 import { Link, useNavigate } from 'react-router-dom';
 import mentorhublogo from '../assets/mentorhub-logo.png';
 import LoginButton from '../components/LoginButton';
 
 function LoginPage() {
   let navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isHovered, setIsHovered] = useState(false);
 
   const pageStyle = {
     display: 'flex',
@@ -14,7 +19,7 @@ function LoginPage() {
     height: '100vh',
     color: '#333',
     textAlign: 'center',
-    background: 'linear-gradient(135deg, #f093fb, #f5576c)',
+    background: 'linear-gradient(135deg, #DE3235, #0093E9)',
   };
 
   const formStyle = {
@@ -34,9 +39,10 @@ function LoginPage() {
   const buttonStyle = {
     padding: '10px',
     fontSize: '16px',
-    color: '#fff',
-    background: '#333',
-    border: 'none',
+    fontWeight: 'bold',
+    color: isHovered ? '#fff' : 'black',
+    background: isHovered ? 'black' : 'transparent',
+    border: 'solid black 5px',
     borderRadius: '5px',
     cursor: 'pointer',
   };
@@ -44,7 +50,7 @@ function LoginPage() {
   const linkStyle = {
     marginTop: '20px',
     textDecoration: 'none',
-    color: '#333',
+    color: '#000',
   };
 
   const imageStyle = {
@@ -53,7 +59,24 @@ function LoginPage() {
     borderRadius: '50%'
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    try {
+      const response = await axios.post('/api/login', {
+        email,
+        password
+      });
+
+      if (response.status === 200) {
+        navigate("/dashboard");
+      } else {
+        alert("Failed to login:", response.statusText);
+      }
+    } catch (error) {
+      console.error('Failed to login:', error.message);
+    }
+  }
 
   return (
     <div style={pageStyle}>
@@ -64,15 +87,23 @@ function LoginPage() {
           type="email"
           placeholder="Email"
           style={inputStyle}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
           placeholder="Password"
           style={inputStyle}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" style={buttonStyle} onClick={() => navigate("/dashboard")}>Log In</button>
+        <button style={buttonStyle}
+          onClick={handleSubmit}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          Log In
+        </button>
       </form>
       <Link to="/" style={linkStyle}>Back to Home</Link>
     </div>
