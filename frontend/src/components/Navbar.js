@@ -1,11 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Navbar() {
+  let navigate = useNavigate();
 
   const handleLogout = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await axios.get('/api/logout');
+      if (response.status === 200) {
+        navigate("/");
+      } else {
+        alert("Failed to logout:", response.statusText);
+      }
+    } catch (error) {
+      console.error('Failed to login:', error.message);
+    }
   }
 
   return (
@@ -15,7 +27,7 @@ function Navbar() {
         <Link to="/dashboard" style={styles.navLink}>Dashboard</Link>
         <Link to="/profile" style={styles.navLink}>Profile</Link>
         <Link to="/about" style={styles.navLink}>About Us</Link>
-        <button style={styles.logoutButton}>Logout</button>
+        <button style={styles.logoutButton} onClick={handleLogout}>Logout</button>
       </div>
     </nav>
   );

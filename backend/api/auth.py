@@ -25,7 +25,7 @@ def login():
 @auth_blueprint.route('/api/logout', methods=['GET'])
 def logout():
     session.pop('username', None)
-    return jsonify({'message': 'Logged out successfully'})
+    return jsonify({'message': 'Logged out successfully'}), 200
 
 
 @auth_blueprint.route('/api/check_login', methods=['GET'])
