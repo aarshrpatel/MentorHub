@@ -25,10 +25,9 @@ const DiscoveryPage = () => {
   };
 
   return (
-    <>
-    <div>
+    <div style={{ background: '#DEE3E0', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <NavBar />
-      <div style={{ textAlign: 'center', margin: '20px' }}>
+      <div style={{ textAlign: 'center', margin: '20px', flex: '1' }}>
         <h1 style={{ marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>Discovery</h1>
         <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ flex: '1', marginRight: '10px' }}>
@@ -76,9 +75,8 @@ const DiscoveryPage = () => {
         <hr style={{ margin: '20px auto', width: '80%', border: '1px solid #ddd' }} />
         <div style={{ textAlign: 'center', marginTop: '20px' }}>You can choose any field you want to learn from on this page!</div>
       </div>
+      <Footer />
     </div>
-    <Footer />
-    </>
   );
 };
 
