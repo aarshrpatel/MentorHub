@@ -9,6 +9,7 @@ function LoginPage() {
   let navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
   const [isLoginHovered, setIsLoginHovered] = useState(false);
   const [isSignUpHovered, setIsSignUpHovered] = useState(false);
 
@@ -67,6 +68,13 @@ function LoginPage() {
     borderRadius: '50%'
   };
 
+  const styles = {
+    error: {
+      color: 'red', // Use a more appropriate color for errors
+      marginTop: '10px',
+    },
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -84,7 +92,11 @@ function LoginPage() {
         alert("Failed to login:", response.statusText);
       }
     } catch (error) {
-      console.error('Failed to login:', error.message);
+      const errorMessage = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+      console.error('Failed to login:', errorMessage);
+      setLoginError("Failed to login: " + errorMessage);
     }
   }
 
@@ -115,6 +127,9 @@ function LoginPage() {
         >
           Log In
         </button> 
+        {
+          loginError && <div style={styles.error}>{loginError}</div>
+        }
         <Link
         to="/signup"
         style={{ ...buttonStyle, ...(isSignUpHovered ? buttonHoverStyle : null) }}
