@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import MentorList from '../components/MentorList';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function MentorsPage() {
   const [mentors, setMentors] = useState([]);
@@ -25,18 +27,28 @@ function MentorsPage() {
   };
 
   return (
-    <div style={styles.page}>
-      <SearchBar onSearch={handleSearch} />
-      <MentorList mentors={getFilteredMentors()} />
+    <div style={styles.container}>
+      <Navbar />
+      <h2 style={styles.h2}>Mentors</h2>
+      <div style={styles.page}>
+        <SearchBar onSearch={handleSearch} />
+        <MentorList mentors={getFilteredMentors()} />
+      </div>
+      <Footer />
     </div>
   );
 }
 
 const styles = {
+    h2: {
+      textAlign: 'left',
+      fontSize: '36px',
+      margin: '20px 20px',
+    },
     page: {
       padding: '20px',
       maxWidth: '1200px',
-      margin: '0 auto',
+      margin: '0',
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
       gap: '20px',
@@ -49,6 +61,11 @@ const styles = {
       borderRadius: '25px',
       marginBottom: '30px',
       outline: 'none',
+    },
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
     },
     // Add more styles as needed
   };

@@ -48,9 +48,10 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    background: '#007bff',
+    background: 'linear-gradient(135deg, #DE3235, #0093E9)',
     color: '#fff',
     padding: '10px 20px',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
   },
   logo: {
     fontWeight: 'bold',

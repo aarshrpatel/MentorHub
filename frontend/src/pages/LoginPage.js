@@ -18,7 +18,7 @@ function LoginPage() {
     height: '100vh',
     color: '#333',
     textAlign: 'center',
-    background: 'linear-gradient(135deg, #f093fb, #f5576c)',
+    background: 'linear-gradient(135deg, #DE3235, #0093E9)',
   };
 
   const formStyle = {

@@ -8,6 +8,7 @@ import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage'; // Import the ProfilePage
 import SignupPage from './pages/SignupPage';
 import NotFoundPage from './pages/NotFoundPage';
+import MentorsPage from './pages/MentorsPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 

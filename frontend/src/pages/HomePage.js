@@ -17,7 +17,7 @@ function HomePage() {
     height: '100vh',
     color: '#333',
     textAlign: 'center',
-    background: 'linear-gradient(135deg, #6e8efb, #a777e3)',
+    background: 'linear-gradient(135deg, #DE3235, #0093E9)',
   };
 
   const buttonStyle = {

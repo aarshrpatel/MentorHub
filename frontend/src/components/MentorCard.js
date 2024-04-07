@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 function MentorCard({ mentor }) {
   return (
@@ -18,6 +19,12 @@ function MentorCard({ mentor }) {
     </motion.div>
   );
 }
+
+const cardVariants = {
+    initial: { opacity: 0, scale: 0.9 },
+    in: { opacity: 1, scale: 1 },
+    out: { opacity: 0, scale: 0.9 },
+  };
 
 const styles = {
     card: {
