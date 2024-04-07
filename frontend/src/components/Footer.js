@@ -20,7 +20,9 @@ const styles = {
     background: '#333',
     color: '#fff',
     padding: '20px 0',
-    marginTop: 'auto', // This helps to push the footer to the bottom of the page
+    position: 'fixed',
+    bottom: 0,
+    width: '100%',
   },
   footerContent: {
     display: 'flex',
