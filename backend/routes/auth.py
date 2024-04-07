@@ -1,15 +1,16 @@
 from flask import Blueprint, request, session, jsonify, redirect, url_for
 from model.database_func import read_data
 from model.User import User, get_user
+from model.data_constants import *
 
 auth_blueprint = Blueprint('auth', __name__)
 
-@auth_blueprint.route('/login', methods=['POST'])
+@auth_blueprint.route('/api/login', methods=['POST'])
 def login():
     if request.methods == "POST":
         email = request.json.get('email')
         password = request.json.get('password')
-        accounts = read_data('../../database/account.csv')
+        accounts = read_data(ACCOUNT_FILE)
 
         for acc in accounts:
             if acc['email'] == email and acc['password'] == password:
@@ -20,13 +21,13 @@ def login():
             return jsonify({'error': 'Invalid username or password'}), 401
         
 
-@auth_blueprint.route('/logout', methods=['GET'])
+@auth_blueprint.route('/api/logout', methods=['GET'])
 def logout():
     session.pop('username', None)
     return jsonify({'message': 'Logged out successfully'})
 
 
-@auth_blueprint.route('/check_login', methods=['GET'])
+@auth_blueprint.route('/api/check_login', methods=['GET'])
 def check_login():
     if 'username' in session:
         return jsonify({'logged_in': True, 'username': session['username']})
